@@ -9,6 +9,5 @@ WORKDIR $APP_ROOT
 
 COPY ./Gemfile $APP_ROOT/Gemfile
 COPY ./Gemfile.lock $APP_ROOT/Gemfile.lock
-RUN bundle install
-
-# COPY . /myapp
+RUN gem install bundler && \
+    bundle install --without production

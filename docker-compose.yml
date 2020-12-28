@@ -13,13 +13,34 @@ services:
       context: .
       dockerfile: Dockerfile
     volumes:
-      - .:/app
+      - .:/startlens
+      - log_data:/startlens/log
+      - public_data:/startlens/public
+      - tmp_data:/startlens/tmp
+      - sockets:/startlens/tmp/sockets
     ports:
       - "3000:3000"
     tty: true
+    stdin_open: true
     depends_on:
       - db
-    working_dir: "/app"
-    command: "rails s -b 0.0.0.0"
+    command: bundle exec puma -C config/puma.rb
+  nginx:
+    build:
+      context: .
+      dockerfile: ./nginx/Dockerfile
+    ports:
+      - "80:80"
+    depends_on:
+      - app
+    volumes:
+      - public_data:/startlens/public
+      - tmp_data:/startlens/tmp
+      - sockets:/startlens/tmp/sockets
 volumes:
   mysql_data:
+  public_data:
+  tmp_data:
+  log_data:
+  sockets:
+
