@@ -1,24 +1,14 @@
-# README
+## README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
 
-Things you may want to cover:
+### 環境
 
-* Ruby version
+* ruby: 2.6.6
+* rails: 5.2.4.4
+* docker-compose: 3.7
+* circleCI: 2.1
 
-* System dependencies
+###　実装内容
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Ruby on RailsのScaffoldを利用した簡単なアプリを動作させるように開発環境・本番環境のDockerfileを作成。
+CircleCIで自動テストを行いデプロイの自動化も実施。
