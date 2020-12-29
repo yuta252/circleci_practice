@@ -38,7 +38,7 @@ jobs:
           command: gem install bundler -v 1.17.2
       - run:
           name: Install bundle gems
-          command: bundle check --path vendor/bundle || bundle install --deployment
+          command: bundle check --path vendor/bundle || bundle install --path vendor/bundle
       - save_cache:
           name: Save gem chache
           key: v1-bundle-{{ checksum "Gemfile.lock" }}
